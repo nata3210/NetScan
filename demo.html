@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Demo Escáner</title>
+
+<style>
+
+body{
+background:#02030a;
+color:white;
+font-family:Arial;
+margin:0;
+text-align:center;
+}
+
+nav{
+background:#05070f;
+padding:15px;
+border-bottom:2px solid #00ffe1;
+}
+
+nav a{
+color:white;
+margin:20px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* RADAR */
+
+.radar{
+
+margin:60px auto;
+width:300px;
+height:300px;
+border-radius:50%;
+border:3px solid #00ffe1;
+position:relative;
+overflow:hidden;
+
+}
+
+/* LINEA DEL RADAR */
+
+.linea{
+
+width:100%;
+height:100%;
+position:absolute;
+background:conic-gradient(
+transparent 0deg,
+#00ffe1 30deg,
+transparent 60deg
+);
+
+animation:rotar 3s linear infinite;
+
+}
+
+@keyframes rotar{
+
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+
+}
+
+/* DISPOSITIVOS */
+
+.punto{
+
+position:absolute;
+width:10px;
+height:10px;
+background:#00ffe1;
+border-radius:50%;
+box-shadow:0 0 10px #00ffe1;
+
+}
+
+/* POSICIONES */
+
+.p1{
+top:40px;
+left:140px;
+}
+
+.p2{
+top:200px;
+left:60px;
+}
+
+.p3{
+top:150px;
+left:220px;
+}
+
+.p4{
+top:90px;
+left:200px;
+}
+
+</style>
+
+<script>
+
+
+function escanear(){
+
+let radar=document.getElementById("puntos")
+let lista=document.getElementById("lista")
+
+radar.innerHTML=""
+lista.innerHTML=""
+
+let dispositivos=[
+
+{ip:"192.168.1.2",nombre:"Laptop"},
+{ip:"192.168.1.5",nombre:"Smartphone"},
+{ip:"192.168.1.8",nombre:"Smart TV"},
+{ip:"192.168.1.10",nombre:"Router"}
+
+]
+
+dispositivos.forEach((d,i)=>{
+
+setTimeout(()=>{
+
+let punto=document.createElement("div")
+
+punto.className="punto"
+
+punto.style.top=Math.random()*260+"px"
+punto.style.left=Math.random()*260+"px"
+
+radar.appendChild(punto)
+
+let texto=document.createElement("p")
+
+texto.innerText=d.ip+" - "+d.nombre
+
+lista.appendChild(texto)
+
+},i*1000)
+
+})
+
+}
+
+function detectar(){
+
+let dispositivos=[
+"192.168.1.2 - Laptop",
+"192.168.1.5 - Smartphone",
+"192.168.1.8 - Smart TV",
+"192.168.1.10 - Router"
+]
+
+let contenedor=document.getElementById("lista")
+
+contenedor.innerHTML=""
+
+dispositivos.forEach(d=>{
+let p=document.createElement("p")
+p.className="dispositivo"
+p.textContent=d
+contenedor.appendChild(p)
+})
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<nav>
+<a href="index.html">Inicio</a>
+<a href="caracteristicas.html">Características</a>
+<a href="demo.html">Demo</a>
+<a href="descargar.html">Descargar</a>
+</nav>
+
+<h1>Demo del Escáner de Red</h1>
+
+<div class="radar">
+
+<div class="linea"></div>
+
+<div id="puntos"></div>
+
+</div>
+
+<button onclick="escanear()">Escanear red</button>
+
+<div id="lista"></div>
+
+</body>
+</html>

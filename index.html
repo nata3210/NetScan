@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Escáner de Red</title>
+
+<style>
+
+#particles{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+background:#02030a;
+}
+
+body{
+background: radial-gradient(circle at top,#0b0f1a,#02030a);
+color:white;
+font-family:Arial;
+margin:0;
+}
+
+/* MENU */
+
+nav{
+background:#05070f;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+border-bottom:2px solid #00ffe1;
+}
+
+.logo{
+display:flex;
+align-items:center;
+}
+
+.logo img{
+width:120px;
+margin-right:15px;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-weight:bold;
+}
+
+.menu a:hover{
+color:#00ffe1;
+}
+
+/* CONTENIDO */
+
+.contenido{
+text-align:center;
+padding:120px 20px;
+}
+
+h1{
+font-size:48px;
+color:#00ffe1;
+}
+
+p{
+font-size:20px;
+max-width:700px;
+margin:auto;
+margin-top:20px;
+}
+
+.boton{
+margin-top:40px;
+display:inline-block;
+background:#00ffe1;
+color:black;
+padding:15px 30px;
+border-radius:6px;
+font-weight:bold;
+text-decoration:none;
+}
+
+.descripcion{
+font-size:20px;
+max-width:750px;
+margin:auto;
+margin-top:20px;
+line-height:1.6;
+}
+
+.descripcion2{
+font-size:18px;
+max-width:700px;
+margin:auto;
+margin-top:15px;
+opacity:0.8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<nav>
+
+<div class="logo">
+<img src="logo.png">
+<h2>NetScan</h2>
+</div>
+
+<div class="menu">
+<a href="index.html">Inicio</a>
+<a href="caracteristicas.html">Características</a>
+<a href="demo.html">Demo del Escáner</a>
+<a href="descargar.html">Descargar</a>
+</div>
+
+</nav>
+
+<div class="contenido">
+
+<h1>Escáner Inteligente de Red</h1>
+
+<p class="descripcion">
+NetScan es una aplicación web diseñada para monitorear redes locales y
+detectar dispositivos conectados en tiempo real. Utiliza un radar visual
+interactivo que permite identificar direcciones IP, dispositivos activos
+y actividad dentro de una red WiFi de forma gráfica y fácil de entender.
+</p>
+
+<p class="descripcion2">
+Este proyecto simula una herramienta de ciberseguridad que ayuda a los
+usuarios a visualizar los equipos conectados a su red y comprender cómo
+funciona el monitoreo de redes.
+</p>
+
+<a class="boton" href="demo.html">Ver demostración</a>
+
+</div>
+
+<script>
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*1,
+vy:(Math.random()-0.5)*1,
+size:2
+});
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0 || p.x>canvas.width) p.vx*=-1;
+if(p.y<0 || p.y>canvas.height) p.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+ctx.fillStyle="#00ffe1";
+ctx.fill();
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+</script>
+
+</body>
+</html>

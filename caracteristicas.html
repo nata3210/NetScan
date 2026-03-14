@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Características</title>
+
+<style>
+
+body{
+background:#02030a;
+color:white;
+font-family:Arial;
+margin:0;
+text-align:center;
+}
+
+nav{
+background:#05070f;
+padding:15px;
+border-bottom:2px solid #00ffe1;
+}
+
+nav a{
+color:white;
+margin:20px;
+text-decoration:none;
+font-weight:bold;
+}
+
+h1{
+color:#00ffe1;
+margin-top:60px;
+}
+
+/* CONTENEDOR */
+
+.contenedor{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:30px;
+margin-top:50px;
+padding:20px;
+}
+
+/* TARJETAS */
+
+.card{
+background:#0b0f1a;
+border:1px solid #00ffe1;
+width:250px;
+padding:25px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #00ffe1;
+}
+
+.card h3{
+color:#00ffe1;
+}
+
+.card p{
+font-size:15px;
+opacity:0.8;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+<a href="index.php">Inicio</a>
+<a href="caracteristicas.php">Características</a>
+<a href="demo.php">Demo</a>
+<a href="descargar.php">Descargar</a>
+</nav>
+
+<h1>Características del Escáner</h1>
+
+<div class="contenedor">
+
+<div class="card">
+<h3>Detección de dispositivos</h3>
+<p>Identifica automáticamente los dispositivos conectados a la red.</p>
+</div>
+
+<div class="card">
+<h3>Direcciones IP</h3>
+<p>Muestra las direcciones IP de cada dispositivo detectado.</p>
+</div>
+
+<div class="card">
+<h3>MAC Address</h3>
+<p>Permite visualizar direcciones MAC para identificar hardware.</p>
+</div>
+
+<div class="card">
+<h3>Radar visual</h3>
+<p>Interfaz gráfica que simula un radar de monitoreo de red.</p>
+</div>
+
+<div class="card">
+<h3>Monitoreo</h3>
+<p>Simulación de monitoreo en tiempo real de actividad en red.</p>
+</div>
+
+<div class="card">
+<h3>Seguridad</h3>
+<p>Ayuda a detectar dispositivos desconocidos en la red.</p>
+</div>
+
+</div>
+
+</body>
+</html>

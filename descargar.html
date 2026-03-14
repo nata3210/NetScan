@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Descargar</title>
+
+<style>
+
+body{
+background:#02030a;
+color:white;
+font-family:Arial;
+text-align:center;
+margin:0;
+}
+
+/* MENU */
+
+nav{
+background:#05070f;
+padding:15px;
+border-bottom:2px solid #00ffe1;
+}
+
+nav a{
+color:white;
+margin:20px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* BOTON */
+
+.boton{
+background:#00ffe1;
+color:black;
+padding:15px 30px;
+border-radius:6px;
+font-weight:bold;
+border:none;
+cursor:pointer;
+margin-top:20px;
+}
+
+/* BARRA DE PROGRESO */
+
+.barra-contenedor{
+width:60%;
+margin:30px auto;
+background:#111;
+border-radius:10px;
+overflow:hidden;
+border:1px solid #00ffe1;
+}
+
+.barra{
+height:25px;
+width:0%;
+background:#00ffe1;
+transition:width 0.4s;
+}
+
+#porcentaje{
+margin-top:10px;
+font-size:18px;
+color:#00ffe1;
+}
+
+#mensaje{
+margin-top:20px;
+font-size:18px;
+}
+
+</style>
+
+<script>
+
+function descargar(){
+
+let barra=document.getElementById("barra")
+let porcentaje=document.getElementById("porcentaje")
+let mensaje=document.getElementById("mensaje")
+
+let progreso=0
+
+mensaje.innerText="Preparando descarga..."
+
+let intervalo=setInterval(function(){
+
+progreso+=10
+
+barra.style.width=progreso+"%"
+porcentaje.innerText=progreso+"%"
+
+if(progreso==20){
+mensaje.innerText="Iniciando descarga..."
+}
+
+if(progreso==60){
+mensaje.innerText="Descargando NetScan..."
+}
+
+if(progreso>=100){
+
+clearInterval(intervalo)
+
+mensaje.innerText="Descarga completada ✔"
+
+}
+
+},500)
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<nav>
+<a href="index.html">Inicio</a>
+<a href="caracteristicas.html">Características</a>
+<a href="demo.html">Demo</a>
+<a href="descargar.html">Descargar</a>
+</nav>
+
+<h1>Descargar Escáner</h1>
+
+<p>Versión de demostración del sistema de monitoreo de red.</p>
+
+<button onclick="descargar()" class="boton">
+Descargar App
+</button>
+
+<div class="barra-contenedor">
+<div id="barra" class="barra"></div>
+</div>
+
+<div id="porcentaje">0%</div>
+
+<p id="mensaje"></p>
+
+</body>
+</html>
